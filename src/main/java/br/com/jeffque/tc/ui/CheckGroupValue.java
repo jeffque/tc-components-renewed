@@ -21,4 +21,8 @@ public class CheckGroupValue<V> {
 	public void add(CheckValue<V> check) {
 		checks.add(check);
 	}
+	
+	public void remove(CheckValue<V> oldMember) {
+		checks.remove(oldMember);
+	}
 }
