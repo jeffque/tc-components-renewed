@@ -18,7 +18,7 @@ public class CheckGroupValue<V> {
 		return selecteds;
 	}
 	
-	public void addCheck(CheckValue<V> check) {
+	public void add(CheckValue<V> check) {
 		checks.add(check);
 	}
 }
