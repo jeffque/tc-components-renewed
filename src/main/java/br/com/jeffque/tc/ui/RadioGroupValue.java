@@ -36,4 +36,8 @@ public class RadioGroupValue<V> {
 		rgc.add(newMember);
 	}
 	
+	public void remove(RadioValue<V> oldMember) {
+		rgc.remove(oldMember);
+	}
+	
 }
