@@ -99,5 +99,10 @@
 			<artifactId>tc</artifactId>
 			<version>3.3_2928</version>
 		</dependency>
+		<dependency>
+			<groupId>br.com.jeffque</groupId>
+			<artifactId>magical-utils</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
