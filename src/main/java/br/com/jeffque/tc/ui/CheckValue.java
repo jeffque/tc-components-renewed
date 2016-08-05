@@ -1,6 +1,6 @@
 package br.com.jeffque.tc.ui;
 
-import br.com.jeffque.tc.util.Valueable;
+import br.com.jeffque.magic.util.Valueable;
 import totalcross.ui.Check;
 
 public class CheckValue<V> extends Check implements Valueable<V> {
