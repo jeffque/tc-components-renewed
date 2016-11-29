@@ -17,6 +17,7 @@ public class ProportionalMultiSlider<V> {
 	int n;
 	BigDecimal bign;
 	BigDecimal dragSum;
+	BigDecimal maxz;
 	Map<Integer,BigDecimal> oldValues = new HashMap<>();
 	boolean estrategiaZero;
 	
@@ -48,11 +49,15 @@ public class ProportionalMultiSlider<V> {
 			}
 		}
 		bign = new BigDecimal(n);
+		maxz = dragSum.add(z);
 		estrategiaZero = dragSum.compareTo(BigDecimal.ZERO) == 0;
 	}
 	
 	public void recalculo() {
 		if (dragging != null && n >= 1) {
+			if (dragging.getNextValueAttr().compareTo(maxz) > 0) {
+				dragging.setNextValueAttr(maxz);
+			}
 			if (estrategiaZero) {
 				recalculoZero();
 			} else {
