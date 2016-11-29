@@ -1,9 +1,12 @@
 package br.com.jeffque.tc.ui;
 
 import br.com.jeffque.tc.util.ReadWriteAccessor;
+import totalcross.sys.InvalidNumberException;
+import totalcross.ui.Edit;
 import totalcross.ui.Slider;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.DragEvent;
+import totalcross.ui.event.FocusListener;
 import totalcross.ui.event.PenEvent;
 import totalcross.ui.event.PenListener;
 import totalcross.ui.event.PressListener;
@@ -12,6 +15,7 @@ import totalcross.util.BigDecimal;
 public class SliderValue<V> {
 	int factor;
 	Slider slider;
+	Edit edtValue;
 	ReadWriteAccessor<V, BigDecimal> accessor;
 	V value;
 	BigDecimal max;
@@ -22,7 +26,19 @@ public class SliderValue<V> {
 	public SliderValue(V value, ReadWriteAccessor<V, BigDecimal> accessor, BigDecimal max) {
 		this.factor = 4;
 		this.value = value;
-		this.accessor = accessor;
+		this.accessor = new ReadWriteAccessor<V, BigDecimal>() {
+			ReadWriteAccessor<V, BigDecimal> wrappedAccessor = accessor;
+			@Override
+			public BigDecimal getAttr(V source) {
+				return wrappedAccessor.getAttr(source);
+			}
+
+			@Override
+			public void setAttr(V source, BigDecimal value) {
+				wrappedAccessor.setAttr(source, value);
+				edtValue.setText(value.setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString());
+			}
+		};
 		this.max = max;
 		BigDecimal val = accessor.getAttr(value);
 		
@@ -76,10 +92,43 @@ public class SliderValue<V> {
 				}
 			}
 		});
+		
+		edtValue = new Edit();
+		edtValue.setValidChars("0123456789.");
+		edtValue.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusOut(ControlEvent arg0) {
+				BigDecimal newBD = BigDecimal.ZERO;
+				
+				if (!edtValue.getText().matches("^[.]?$")) {
+					try {
+						newBD = new BigDecimal(edtValue.getText());
+					} catch (InvalidNumberException e) {
+					}
+				}
+				if (proportionalMultiSlider != null) {
+					proportionalMultiSlider.penDown(SliderValue.this);
+				}
+				setNextValueAttr(newBD);
+				if (proportionalMultiSlider != null) {
+					proportionalMultiSlider.recalculo();
+					proportionalMultiSlider.consolida();
+				}
+			}
+			
+			@Override
+			public void focusIn(ControlEvent arg0) {
+			}
+		});
 	}
 	
 	public Slider getSlider() {
 		return slider;
+	}
+	
+	public Edit getEdtValue() {
+		return edtValue;
 	}
 
 	public void setProportionalMultiSlider(ProportionalMultiSlider<V> proportionalMultiSlider) {
