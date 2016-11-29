@@ -54,10 +54,12 @@ public class ProportionalMultiSlider<V> {
 	}
 	
 	public void recalculo() {
-		if (estrategiaZero) {
-			recalculoZero();
-		} else {
-			recalculoDelta();
+		if (dragging != null) {
+			if (estrategiaZero) {
+				recalculoZero();
+			} else {
+				recalculoDelta();
+			}
 		}
 	}
 	
@@ -89,9 +91,12 @@ public class ProportionalMultiSlider<V> {
 	}
 
 	public void consolida() {
-		for (SliderValue<V> slider: sliders) {
-			Vm.debug("slider " + slider.getId() + " saindo de " + slider.getValueAttr().setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString() + " para " + slider.getNextValueAttr().setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString());
-			slider.consolidaValueAttr();
+		if (dragging != null) {
+			for (SliderValue<V> slider: sliders) {
+				Vm.debug("slider " + slider.getId() + " saindo de " + slider.getValueAttr().setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString() + " para " + slider.getNextValueAttr().setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString());
+				slider.consolidaValueAttr();
+			}
+			dragging = null;
 		}
 	}
 
