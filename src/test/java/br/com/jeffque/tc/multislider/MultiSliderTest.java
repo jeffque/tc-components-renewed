@@ -73,15 +73,20 @@ public class MultiSliderTest extends BaseContainer {
 				
 				ProportionalMultiSlider<BigDecimalWrapper> multiSlider = createMultiSlider();
 				boolean firstTime = true;
-				
+				int sizeEdt = fm.stringWidth("XXX.XXX");
+				Edit lastTcedt = null;
 				for (SliderValue<BigDecimalWrapper> s: multiSlider.getSliders()) {
 					Slider tcs = s.getSlider();
+					Edit tcedt = s.getEdtValue();
 					if (firstTime) {
 						firstTime = false;
-						multiSliderContainer.add(tcs, LEFT, TOP, FILL, PREFERRED);
+						multiSliderContainer.add(tcedt, LEFT, TOP, sizeEdt, fmH * 2);
+						multiSliderContainer.add(tcs, AFTER, TOP, FILL, PREFERRED);
 					} else {
-						multiSliderContainer.add(tcs, LEFT, AFTER, FILL, PREFERRED);
+						multiSliderContainer.add(tcedt, SAME, AFTER, SAME, SAME, lastTcedt);
+						multiSliderContainer.add(tcs, AFTER, SAME, FILL, PREFERRED, tcedt);
 					}
+					lastTcedt = tcedt;
 				}
 			}
 		});
