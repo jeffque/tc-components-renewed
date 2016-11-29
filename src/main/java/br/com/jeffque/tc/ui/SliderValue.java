@@ -1,5 +1,6 @@
 package br.com.jeffque.tc.ui;
 
+import br.com.jeffque.tc.util.Presenter;
 import br.com.jeffque.tc.util.ReadWriteAccessor;
 import totalcross.sys.InvalidNumberException;
 import totalcross.ui.Check;
@@ -15,9 +16,11 @@ import totalcross.util.BigDecimal;
 
 public class SliderValue<V> {
 	int factor;
+	LabelValue<V> lb;
 	Slider slider;
 	Edit edtValue;
 	Check chkUnlocked;
+	Presenter<V> presenter;
 	ReadWriteAccessor<V, BigDecimal> accessor;
 	V value;
 	BigDecimal max;
@@ -26,9 +29,11 @@ public class SliderValue<V> {
 	ProportionalMultiSlider<V> proportionalMultiSlider;
 	int id;
 	
-	public SliderValue(V value, ReadWriteAccessor<V, BigDecimal> accessor, BigDecimal max) {
+	public SliderValue(V value, Presenter<V> presenter, ReadWriteAccessor<V, BigDecimal> accessor, BigDecimal max) {
 		this.factor = 4;
 		this.value = value;
+		this.presenter = presenter;
+		this.lb = new LabelValue<>(presenter, value);
 		this.accessor = new ReadWriteAccessor<V, BigDecimal>() {
 			ReadWriteAccessor<V, BigDecimal> wrappedAccessor = accessor;
 			@Override
@@ -136,6 +141,10 @@ public class SliderValue<V> {
 				unlocked = chkUnlocked.isChecked();
 			}
 		});
+	}
+	
+	public LabelValue<V> getLb() {
+		return lb;
 	}
 	
 	public Slider getSlider() {

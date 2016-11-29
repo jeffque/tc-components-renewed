@@ -92,7 +92,7 @@ public class ProportionalMultiSliderBuilder<V> {
 		
 		ProportionalMultiSlider<V> multiSlider = new ProportionalMultiSlider<>(sum);
 		for (V value: values) {
-			SliderValue<V> slider = new SliderValue<V>(value, accessor, sum);
+			SliderValue<V> slider = new SliderValue<V>(value, presenter, accessor, sum);
 			multiSlider.addSlider(slider);
 		}
 		return multiSlider;
