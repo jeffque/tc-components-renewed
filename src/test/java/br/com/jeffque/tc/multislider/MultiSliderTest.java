@@ -102,7 +102,7 @@ public class MultiSliderTest extends BaseContainer {
 
 			@Override
 			public String stringfy(BigDecimalWrapper value) {
-				return value.getValue() != null? value.getValue().toPlainString(): "";
+				return "" + value.getId();
 			}
 		}, new ReadWriteAccessor<BigDecimalWrapper, BigDecimal>() {
 
@@ -117,7 +117,9 @@ public class MultiSliderTest extends BaseContainer {
 			}
 		});
 		for (int i = getQt() - 1; i >= 0; i--) {
-			builder.addValue(new BigDecimalWrapper());
+			BigDecimalWrapper wrapper = new BigDecimalWrapper();
+			wrapper.setId(i);
+			builder.addValue(wrapper);
 		}
 		builder.setSum(getValue());
 		
