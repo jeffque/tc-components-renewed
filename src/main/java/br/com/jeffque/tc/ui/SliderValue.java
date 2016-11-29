@@ -11,6 +11,7 @@ import totalcross.ui.event.PressListener;
 import totalcross.util.BigDecimal;
 
 public class SliderValue<V> {
+	int factor;
 	Slider slider;
 	ReadWriteAccessor<V, BigDecimal> accessor;
 	V value;
@@ -20,13 +21,19 @@ public class SliderValue<V> {
 	int id;
 	
 	public SliderValue(V value, ReadWriteAccessor<V, BigDecimal> accessor, BigDecimal max) {
+		this.factor = 4;
 		this.value = value;
 		this.accessor = accessor;
 		this.max = max;
 		BigDecimal val = accessor.getAttr(value);
 		
 		slider = new Slider();
-		slider.setValues(0, 1, 0, 1001);
+		int sliderMax = 1;
+		
+		for (int i = 0; i < factor; i++) {
+			sliderMax *= 10;
+		}
+		slider.setValues(0, 1, 0, sliderMax + 1);
 		
 		setNextValueAttr(val);
 		
@@ -88,14 +95,14 @@ public class SliderValue<V> {
 	}
 
 	public BigDecimal getNextValueAttr() {
-		BigDecimal proportion = new BigDecimal(slider.getValue()).movePointLeft(3);
+		BigDecimal proportion = new BigDecimal(slider.getValue()).movePointLeft(factor);
 		return proportion.multiply(max);
 	}
 
 	public void setNextValueAttr(BigDecimal newNextValue) {
 		BigDecimal proportion = newNextValue.divide(max, 30, BigDecimal.ROUND_HALF_EVEN);
-		// There will be precision until a proportion of 0.001, or 0.1% of the original
-		proportion = proportion.movePointRight(3).setScale(0, BigDecimal.ROUND_HALF_EVEN);
+		// There will be precision until a proportion of 10^-factor
+		proportion = proportion.movePointRight(factor).setScale(0, BigDecimal.ROUND_HALF_EVEN);
 		int intProportion = proportion.intValue();
 		slider.setValue(intProportion);
 		
