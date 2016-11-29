@@ -52,13 +52,15 @@ public class ProportionalMultiSlider<V> {
 	}
 	
 	public void recalculo() {
-		if (dragging != null) {
+		if (dragging != null && n >= 1) {
 			if (estrategiaZero) {
 				recalculoZero();
 			} else {
 				recalculoDelta();
 			}
 			consolidaParcial();
+		} else if (n < 1) {
+			dragging.setNextValueAttr(z);
 		}
 	}
 	
