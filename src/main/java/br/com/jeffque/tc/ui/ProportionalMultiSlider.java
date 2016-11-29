@@ -41,7 +41,7 @@ public class ProportionalMultiSlider<V> {
 		n = 0;
 		
 		for (SliderValue<V> slider: sliders) {
-			if (!slider.equals(sliderValue)) {
+			if (changeableSlider(slider)) {
 				dragSum = dragSum.add(slider.getValueAttr());
 				oldValues.put(slider.getId(), slider.getValueAttr());
 				n++;
@@ -68,10 +68,14 @@ public class ProportionalMultiSlider<V> {
 		BigDecimal delta = d.divide(bign, 30, BigDecimal.ROUND_HALF_EVEN);
 		
 		for (SliderValue<V> slider: sliders) {
-			if (!slider.equals(dragging)) {
+			if (changeableSlider(slider)) {
 				slider.setNextValueAttr(delta);
 			}
 		}
+	}
+	
+	boolean changeableSlider(SliderValue<V> slider) {
+		return !slider.equals(dragging) && slider.isUnlocked();
 	}
 	
 	void recalculoDelta() {
@@ -80,7 +84,7 @@ public class ProportionalMultiSlider<V> {
 
 		BigDecimal delta = d.divide(dragSum, 30, BigDecimal.ROUND_HALF_EVEN);
 		for (SliderValue<V> slider: sliders) {
-			if (!slider.equals(dragging)) {
+			if (changeableSlider(slider)) {
 				BigDecimal newAttr = oldValues.get(slider.id).multiply(BigDecimal.ONE.add(delta));
 				slider.setNextValueAttr(newAttr);
 			}
