@@ -7,7 +7,10 @@ public class RadioValue<V> extends Radio implements Valueable<V> {
 	private V value;
 
 	public RadioValue(V value, String text, RadioGroupValue<V> radioGroup) {
-		super(text, radioGroup != null? radioGroup.getRgc(): null);
+		super(text);
+		if (radioGroup != null) {
+			radioGroup.add(this);
+		}
 		this.value = value;
 	}
 
