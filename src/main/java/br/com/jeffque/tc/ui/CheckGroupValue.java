@@ -29,11 +29,15 @@ public class CheckGroupValue<V> {
 		return selecteds;
 	}
 	
-	public void add(CheckValue<V> check) {
-		checks.add(check);
+	public boolean add(CheckValue<V> check) {
+		return checks.add(check);
 	}
 	
-	public void remove(CheckValue<V> oldMember) {
-		checks.remove(oldMember);
+	public boolean remove(CheckValue<V> oldMember) {
+		return checks.remove(oldMember);
+	}
+	
+	public List<CheckValue<V>> getChecks() {
+		return checks;
 	}
 }
