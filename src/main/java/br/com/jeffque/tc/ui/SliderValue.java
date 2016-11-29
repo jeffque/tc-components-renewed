@@ -128,7 +128,7 @@ public class SliderValue<V> {
 		
 		unlocked = true;
 		chkUnlocked = new Check("");
-		chkUnlocked.setEnabled(true);
+		chkUnlocked.setChecked(true);
 		chkUnlocked.addPressListener(new PressListener() {
 			
 			@Override
