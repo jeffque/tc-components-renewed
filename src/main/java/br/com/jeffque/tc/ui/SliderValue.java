@@ -101,7 +101,6 @@ public class SliderValue<V> {
 		proportion = proportion.movePointRight(factor).setScale(0, BigDecimal.ROUND_HALF_EVEN);
 		int intProportion = proportion.intValue();
 		slider.setValue(intProportion);
-		
 	}
 
 	public void consolidaValueAttr() {
