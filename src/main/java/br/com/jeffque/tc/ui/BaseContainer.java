@@ -119,6 +119,10 @@ public abstract class BaseContainer extends Container {
 		prevContainer.onSwapBack();
 		baseMain.show(prevContainer);
 	}
+	
+	public BaseTCMain<?> getBaseMain() {
+		return baseMain;
+	}
 
 	public void onSwapBack() {
 	}
