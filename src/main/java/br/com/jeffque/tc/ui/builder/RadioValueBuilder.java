@@ -1,6 +1,7 @@
 package br.com.jeffque.tc.ui.builder;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import br.com.jeffque.tc.ui.RadioGroupValue;
@@ -25,6 +26,10 @@ public class RadioValueBuilder<V> {
 	
 	public void addValue(V value) {
 		values.add(value);
+	}
+	
+	public void addValues(Collection<V> value) {
+		values.addAll(value);
 	}
 	
 	public RadioGroupValue<V> build() {
