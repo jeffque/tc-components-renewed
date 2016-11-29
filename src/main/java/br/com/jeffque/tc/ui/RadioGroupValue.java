@@ -1,9 +1,14 @@
 package br.com.jeffque.tc.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import totalcross.ui.RadioGroupController;
 
 public class RadioGroupValue<V> {
 	private RadioGroupController rgc;
+	private List<RadioValue<V>> radios = new ArrayList<>();
+	
 	public RadioGroupValue() {
 		this(new RadioGroupController());
 	}
@@ -32,12 +37,22 @@ public class RadioGroupValue<V> {
 		return (RadioValue<V>) rgc.getSelectedItem();
 	}
 
-	public void add(RadioValue<V> newMember) {
+	public boolean add(RadioValue<V> newMember) {
 		rgc.add(newMember);
+		return radios.add(newMember);
 	}
 	
-	public void remove(RadioValue<V> oldMember) {
+	public boolean remove(RadioValue<V> oldMember) {
 		rgc.remove(oldMember);
+		return radios.remove(oldMember);
+	}
+	
+	public int getSize() {
+		return rgc.getSize();
+	}
+	
+	public List<RadioValue<V>> getRadios() {
+		return radios;
 	}
 	
 }
