@@ -1,7 +1,6 @@
 package br.com.jeffque.tc.ui;
 
 import br.com.jeffque.tc.util.ReadWriteAccessor;
-import totalcross.sys.Vm;
 import totalcross.ui.Slider;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.DragEvent;
@@ -42,7 +41,6 @@ public class SliderValue<V> {
 			
 			@Override
 			public void controlPressed(ControlEvent arg0) {
-				Vm.debug("slideando: " + slider.getValue());
 				if (proportionalMultiSlider != null) {
 					proportionalMultiSlider.recalculo();
 				}
@@ -53,7 +51,6 @@ public class SliderValue<V> {
 			
 			@Override
 			public void penUp(PenEvent arg0) {
-				Vm.debug("Terminou a pena: " + slider.getValue());
 				if (proportionalMultiSlider != null) {
 					proportionalMultiSlider.consolida();
 				}
@@ -65,7 +62,6 @@ public class SliderValue<V> {
 			
 			@Override
 			public void penDragEnd(DragEvent arg0) {
-				Vm.debug("Terminou o drag?");
 			}
 			
 			@Override
@@ -74,7 +70,6 @@ public class SliderValue<V> {
 			
 			@Override
 			public void penDown(PenEvent arg0) {
-				Vm.debug("Começou a pena: " + slider.getValue());
 				if (proportionalMultiSlider != null) {
 					proportionalMultiSlider.penDown(SliderValue.this);
 				}

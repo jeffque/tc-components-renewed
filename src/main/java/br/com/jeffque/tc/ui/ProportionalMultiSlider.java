@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import totalcross.sys.Vm;
 import totalcross.util.BigDecimal;
 
 public class ProportionalMultiSlider<V> {
@@ -43,7 +42,6 @@ public class ProportionalMultiSlider<V> {
 		
 		for (SliderValue<V> slider: sliders) {
 			if (!slider.equals(sliderValue)) {
-				Vm.debug("slider " + slider.getId() + " attr " + slider.getValueAttr().setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString());
 				dragSum = dragSum.add(slider.getValueAttr());
 				oldValues.put(slider.getId(), slider.getValueAttr());
 				n++;
@@ -65,7 +63,6 @@ public class ProportionalMultiSlider<V> {
 	
 	void recalculoZero() {
 		BigDecimal d = z.subtract(dragging.getNextValueAttr());
-		Vm.debug("valor de d no recalculo 0: " + d.setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString());
 		
 		BigDecimal delta = d.divide(bign, 30, BigDecimal.ROUND_HALF_EVEN);
 		
@@ -78,7 +75,6 @@ public class ProportionalMultiSlider<V> {
 	
 	void recalculoDelta() {
 		BigDecimal d = z.subtract(dragging.getNextValueAttr());
-		Vm.debug("valor de d no recalculo delta: " + d.setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString());
 
 
 		BigDecimal delta = d.divide(dragSum, 30, BigDecimal.ROUND_HALF_EVEN);
@@ -93,7 +89,6 @@ public class ProportionalMultiSlider<V> {
 	public void consolida() {
 		if (dragging != null) {
 			for (SliderValue<V> slider: sliders) {
-				Vm.debug("slider " + slider.getId() + " saindo de " + slider.getValueAttr().setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString() + " para " + slider.getNextValueAttr().setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString());
 				slider.consolidaValueAttr();
 			}
 			dragging = null;
