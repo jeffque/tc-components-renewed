@@ -9,6 +9,7 @@ import br.com.jeffque.tc.util.Presenter;
 import br.com.jeffque.tc.util.ReadWriteAccessor;
 import totalcross.sys.InvalidNumberException;
 import totalcross.ui.Button;
+import totalcross.ui.Control;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
 import totalcross.ui.ScrollContainer;
@@ -74,7 +75,7 @@ public class MultiSliderTest extends BaseContainer {
 				ProportionalMultiSlider<BigDecimalWrapper> multiSlider = createMultiSlider();
 				boolean firstTime = true;
 				int sizeEdt = fm.stringWidth("XXX.XXX");
-				Edit lastTcedt = null;
+				Control baseControl = null;
 				for (SliderValue<BigDecimalWrapper> s: multiSlider.getSliders()) {
 					Slider tcs = s.getSlider();
 					Edit tcedt = s.getEdtValue();
@@ -83,10 +84,10 @@ public class MultiSliderTest extends BaseContainer {
 						multiSliderContainer.add(tcedt, LEFT, TOP, sizeEdt, fmH * 2);
 						multiSliderContainer.add(tcs, AFTER, TOP, FILL, PREFERRED);
 					} else {
-						multiSliderContainer.add(tcedt, SAME, AFTER, SAME, SAME, lastTcedt);
+						multiSliderContainer.add(tcedt, SAME, AFTER, SAME, SAME, baseControl);
 						multiSliderContainer.add(tcs, AFTER, SAME, FILL, PREFERRED, tcedt);
 					}
-					lastTcedt = tcedt;
+					baseControl = tcedt;
 				}
 			}
 		});
