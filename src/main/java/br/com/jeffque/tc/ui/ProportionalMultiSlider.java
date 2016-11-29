@@ -58,6 +58,7 @@ public class ProportionalMultiSlider<V> {
 			} else {
 				recalculoDelta();
 			}
+			consolidaParcial();
 		}
 	}
 	
@@ -80,7 +81,7 @@ public class ProportionalMultiSlider<V> {
 		BigDecimal delta = d.divide(dragSum, 30, BigDecimal.ROUND_HALF_EVEN);
 		for (SliderValue<V> slider: sliders) {
 			if (!slider.equals(dragging)) {
-				BigDecimal newAttr = slider.getValueAttr().multiply(BigDecimal.ONE.add(delta));
+				BigDecimal newAttr = oldValues.get(slider.id).multiply(BigDecimal.ONE.add(delta));
 				slider.setNextValueAttr(newAttr);
 			}
 		}
@@ -94,5 +95,12 @@ public class ProportionalMultiSlider<V> {
 			dragging = null;
 		}
 	}
-
+	
+	public void consolidaParcial() {
+		if (dragging != null) {
+			for (SliderValue<V> slider: sliders) {
+				slider.consolidaValueAttr();
+			}
+		}
+	}
 }

@@ -43,6 +43,7 @@ public class SliderValue<V> {
 			public void controlPressed(ControlEvent arg0) {
 				if (proportionalMultiSlider != null) {
 					proportionalMultiSlider.recalculo();
+					proportionalMultiSlider.consolidaParcial();
 				}
 			}
 		});
