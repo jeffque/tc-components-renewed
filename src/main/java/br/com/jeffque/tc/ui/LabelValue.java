@@ -32,5 +32,9 @@ public class LabelValue<V> extends Label implements Valueable<V> {
 	public V getValue() {
 		return value;
 	}
+	
+	public void updateText() {
+		super.setText(presenter.stringfy(value));
+	}
 
 }
