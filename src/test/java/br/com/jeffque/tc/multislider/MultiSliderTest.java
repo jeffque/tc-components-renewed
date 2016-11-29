@@ -2,6 +2,7 @@ package br.com.jeffque.tc.multislider;
 
 import br.com.jeffque.tc.ui.BaseContainer;
 import br.com.jeffque.tc.ui.BaseTCMain;
+import br.com.jeffque.tc.ui.LabelValue;
 import br.com.jeffque.tc.ui.ProportionalMultiSlider;
 import br.com.jeffque.tc.ui.SliderValue;
 import br.com.jeffque.tc.ui.builder.ProportionalMultiSliderBuilder;
@@ -81,15 +82,18 @@ public class MultiSliderTest extends BaseContainer {
 					Slider tcs = s.getSlider();
 					Edit tcedt = s.getEdtValue();
 					Check tccheck = s.getChkUnlocked();
+					LabelValue<BigDecimalWrapper> tclb = s.getLb();
 					if (firstTime) {
 						firstTime = false;
 						multiSliderContainer.add(tccheck, LEFT, TOP, PREFERRED, PREFERRED);
 						multiSliderContainer.add(tcedt, AFTER, TOP, sizeEdt, fmH * 2);
 						multiSliderContainer.add(tcs, AFTER, TOP, FILL, PREFERRED);
+						multiSliderContainer.add(tclb, SAME, AFTER, FILL, fmH * 2- tcs.getHeight(), tcs);
 					} else {
 						multiSliderContainer.add(tccheck, LEFT, AFTER, PREFERRED, PREFERRED, baseControl);
 						multiSliderContainer.add(tcedt, AFTER, SAME, sizeEdt, fmH * 2, tccheck);
 						multiSliderContainer.add(tcs, AFTER, SAME, FILL, PREFERRED, tcedt);
+						multiSliderContainer.add(tclb, SAME, AFTER, FILL, fmH * 2- tcs.getHeight(), tcs);
 					}
 					baseControl = tcedt;
 				}
