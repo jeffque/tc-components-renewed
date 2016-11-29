@@ -95,6 +95,7 @@ public class SliderValue<V> {
 		
 		edtValue = new Edit();
 		edtValue.setValidChars("0123456789.");
+		edtValue.setText(val.setScale(3, BigDecimal.ROUND_HALF_EVEN).toPlainString());
 		edtValue.addFocusListener(new FocusListener() {
 			
 			@Override
