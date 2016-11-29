@@ -20,6 +20,7 @@ public class SliderValue<V> {
 	V value;
 	BigDecimal max;
 	
+	boolean unlocked;
 	ProportionalMultiSlider<V> proportionalMultiSlider;
 	int id;
 	
@@ -122,6 +123,8 @@ public class SliderValue<V> {
 			public void focusIn(ControlEvent arg0) {
 			}
 		});
+		
+		unlocked = true;
 	}
 	
 	public Slider getSlider() {
@@ -163,5 +166,13 @@ public class SliderValue<V> {
 	
 	public int getId() {
 		return id;
+	}
+	
+	public void setUnlocked(boolean unlocked) {
+		this.unlocked = unlocked;
+	}
+	
+	public boolean isUnlocked() {
+		return unlocked;
 	}
 }
