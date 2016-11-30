@@ -1,13 +1,13 @@
 package br.com.jeffque.tc.multislider;
 
+import br.com.jeffque.magic.util.Presenter;
+import br.com.jeffque.magic.util.ReadWriteAccessor;
 import br.com.jeffque.tc.ui.BaseContainer;
 import br.com.jeffque.tc.ui.BaseTCMain;
 import br.com.jeffque.tc.ui.LabelValue;
 import br.com.jeffque.tc.ui.ProportionalMultiSlider;
 import br.com.jeffque.tc.ui.SliderValue;
 import br.com.jeffque.tc.ui.builder.ProportionalMultiSliderBuilder;
-import br.com.jeffque.tc.util.Presenter;
-import br.com.jeffque.tc.util.ReadWriteAccessor;
 import totalcross.sys.InvalidNumberException;
 import totalcross.ui.Button;
 import totalcross.ui.Check;

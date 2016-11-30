@@ -1,7 +1,7 @@
 package br.com.jeffque.tc.ui;
 
-import br.com.jeffque.tc.util.Presenter;
-import br.com.jeffque.tc.util.ReadWriteAccessor;
+import br.com.jeffque.magic.util.Presenter;
+import br.com.jeffque.magic.util.ReadWriteAccessor;
 import totalcross.sys.InvalidNumberException;
 import totalcross.ui.Check;
 import totalcross.ui.Edit;

@@ -1,7 +1,7 @@
 package br.com.jeffque.tc.ui;
 
+import br.com.jeffque.magic.util.Presenter;
 import br.com.jeffque.magic.util.Valueable;
-import br.com.jeffque.tc.util.Presenter;
 import totalcross.ui.Label;
 
 public class LabelValue<V> extends Label implements Valueable<V> {

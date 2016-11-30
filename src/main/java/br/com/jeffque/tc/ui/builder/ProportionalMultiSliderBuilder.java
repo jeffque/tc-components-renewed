@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import br.com.jeffque.magic.util.Presenter;
+import br.com.jeffque.magic.util.ReadWriteAccessor;
 import br.com.jeffque.tc.ui.ProportionalMultiSlider;
 import br.com.jeffque.tc.ui.SliderValue;
-import br.com.jeffque.tc.util.Presenter;
-import br.com.jeffque.tc.util.ReadWriteAccessor;
 import totalcross.util.BigDecimal;
 
 public class ProportionalMultiSliderBuilder<V> {

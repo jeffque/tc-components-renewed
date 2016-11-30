@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import br.com.jeffque.magic.util.Presenter;
+import br.com.jeffque.magic.util.ValueChangeHandler;
 import br.com.jeffque.tc.ui.CheckGroupValue;
 import br.com.jeffque.tc.ui.CheckValue;
-import br.com.jeffque.tc.util.Presenter;
-import br.com.jeffque.tc.util.ValueChangeHandler;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.PressListener;
 
