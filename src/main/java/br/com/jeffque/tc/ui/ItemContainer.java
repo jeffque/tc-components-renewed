@@ -15,6 +15,7 @@ import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.event.PenEvent;
 import totalcross.ui.event.PressListener;
+import totalcross.ui.gfx.Color;
 import totalcross.ui.gfx.Rect;
 
 public class ItemContainer<T> extends Container implements Scrollable {
@@ -172,7 +173,24 @@ public class ItemContainer<T> extends Container implements Scrollable {
 		return pe.timeStamp - ts < 500 && ((!Settings.fingerTouch || !hadParentScrolled()) && isInsideOrNear(pe.x, pe.y));
 	}
 	
-	private void setSelectedContainer(ValueableContainer<? extends T> itemContainer) {
-		selectedContainer = itemContainer;
+	private void setSelectedContainer(ValueableContainer<? extends T> newSelectedContainer) {
+		if (selectedContainer == newSelectedContainer) {
+			return;
+		}
+		if (selectedContainer != null) {
+			Vm.debug("old back color old container (" + selectedContainer.getValue() + ")" + Integer.toHexString(selectedContainer.getBackColor()));
+			selectedContainer.setBackColor(getBackColor() - 1);
+			selectedContainer.repaintNow();
+			Vm.debug("new back color old container (" + selectedContainer.getValue() + ")" + Integer.toHexString(selectedContainer.getBackColor()));
+		}
+		
+		if (newSelectedContainer != null) {
+			Vm.debug("old back color new container (" + newSelectedContainer.getValue() + ")" + Integer.toHexString(newSelectedContainer.getBackColor()));
+			newSelectedContainer.setBackColor(Color.darker(getBackColor()));
+			newSelectedContainer.repaintNow();
+			Vm.debug("new back color new container (" + newSelectedContainer.getValue() + ")" + Integer.toHexString(newSelectedContainer.getBackColor()));
+		}
+		
+		selectedContainer = newSelectedContainer;
 	}
 }
