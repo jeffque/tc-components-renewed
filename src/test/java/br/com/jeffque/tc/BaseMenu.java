@@ -3,6 +3,7 @@ package br.com.jeffque.tc;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.jeffque.tc.itemcontainer.ItemContainerTest;
 import br.com.jeffque.tc.multislider.MultiSliderTest;
 import br.com.jeffque.tc.ui.BaseContainer;
 import br.com.jeffque.tc.ui.BaseTCMain;
@@ -21,6 +22,13 @@ public class BaseMenu extends FirstContainer {
 			@Override
 			public BaseContainer yield(BaseTCMain<?> base) {
 				return new MultiSliderTest(base);
+			}
+		});
+		yielders.add(new ContainerYielder() {
+			
+			@Override
+			public BaseContainer yield(BaseTCMain<?> base) {
+				return new ItemContainerTest(base);
 			}
 		});
 	}
