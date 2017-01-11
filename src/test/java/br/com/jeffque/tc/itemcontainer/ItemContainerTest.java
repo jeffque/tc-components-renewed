@@ -29,8 +29,19 @@ public class ItemContainerTest extends BaseContainer {
 			}
 		});
 		
+		Button resetBtn = new Button("Resetar Restaurante");
+		
+		resetBtn.addPressListener(new PressListener() {
+			
+			@Override
+			public void controlPressed(ControlEvent arg0) {
+				restauranteBuilderView.reset();
+			}
+		});
+		
 		add(restauranteBuilderView, LEFT, AFTER, FILL, PREFERRED);
 		add(addBtn, LEFT, AFTER, FILL, PREFERRED);
+		add(resetBtn, LEFT, AFTER, FILL, PREFERRED);
 		add(itemContainer, LEFT, AFTER, FILL, FILL);
 	}
 }
