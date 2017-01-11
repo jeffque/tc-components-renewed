@@ -7,14 +7,15 @@ import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.PressListener;
 
 public class RestauranteItemView extends ValueableContainer<Restaurante> {
-
+	Label nome;
 	public RestauranteItemView(Restaurante value) {
 		super(value);
+		
+		nome = new Label(getValue().getNome());
 	}
 	
 	@Override
 	public void initUI() {
-		Label nome = new Label(getValue().getNome());
 		add(nome, LEFT, TOP, PREFERRED, PREFERRED);
 		
 		
