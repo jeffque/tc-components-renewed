@@ -5,6 +5,7 @@ import totalcross.ui.Edit;
 import totalcross.ui.Label;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.FocusListener;
+import totalcross.ui.gfx.Rect;
 
 public class RestauranteBuilderView extends ValueableContainer<Restaurante> {
 	private static final String intCharset = Edit.numbersSet;
@@ -129,8 +130,29 @@ public class RestauranteBuilderView extends ValueableContainer<Restaurante> {
 		
 		add(lblTempo, LEFT, AFTER, PREFERRED, PREFERRED);
 		add(edtTempo, AFTER, SAME, FILL, SAME);
+		
+		normalizeEdtPos();
 	}
 	
+	private void normalizeEdtPos() {
+		Edit[] edits = new Edit[] {edtNome, edtSatisfacao, edtTipo, edtPreco, edtDist, edtTempo};
+		int rightmostX = edits[0].getX();
+		
+		for (Edit edit: edits) {
+			int x = edit.getX();
+			
+			if (x > rightmostX) {
+				rightmostX = x;
+			}
+		}
+		
+		for (Edit edit: edits) {
+			Rect r = edit.getRect();
+			r.x = rightmostX;
+			edit.setRect(r);
+		}
+	}
+
 	private RestauranteBuilder getBuilder() {
 		return (RestauranteBuilder) super.getValue();
 	}
