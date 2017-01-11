@@ -12,6 +12,8 @@ public class RestauranteItemView extends ValueableContainer<Restaurante> {
 		super(value);
 		
 		nome = new Label(getValue().getNome());
+		
+		nome.transparentBackground = true;
 	}
 	
 	@Override
