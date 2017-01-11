@@ -12,8 +12,9 @@ import totalcross.ui.Control;
 import totalcross.ui.Flick;
 import totalcross.ui.Scrollable;
 import totalcross.ui.event.ControlEvent;
-import totalcross.ui.event.Event;
+import totalcross.ui.event.DragEvent;
 import totalcross.ui.event.PenEvent;
+import totalcross.ui.event.PenListener;
 import totalcross.ui.event.PressListener;
 import totalcross.ui.gfx.Color;
 import totalcross.ui.gfx.Rect;
@@ -38,6 +39,8 @@ public class ItemContainer<T> extends Container implements Scrollable {
 		if (objects != null) {
 			items.addAll(objects);
 		}
+		onEventFirst = false;
+		callListenersOnAllTargets = true;
 	}
 	
 	@Override
@@ -45,6 +48,41 @@ public class ItemContainer<T> extends Container implements Scrollable {
 		super.initUI();
 		
 		addObjectsUI(items);
+		
+		addPenListener(new PenListener() {
+			Control penTarget;
+			
+			private boolean validAsPress(PenEvent pe) {
+				return ((!Settings.fingerTouch || !hadParentScrolled()) && penTarget.isInsideOrNear(pe.x, pe.y));
+			}
+			
+			@Override
+			public void penDown(PenEvent arg0) {
+				penTarget = (Control) arg0.target;
+				if (penTarget == ItemContainer.this) {
+					setSelectedContainer(null);
+				}
+			}
+			
+			@Override
+			public void penUp(PenEvent arg0) {
+				if (validAsPress(arg0)) {
+					postEventForTarget(arg0);
+				}
+			}
+			
+			@Override
+			public void penDragStart(DragEvent arg0) {
+			}
+			
+			@Override
+			public void penDragEnd(DragEvent arg0) {
+			}
+			
+			@Override
+			public void penDrag(DragEvent arg0) {
+			}
+		});
 	}
 
 	private void addObjectsUI(List<T> items) {
@@ -131,26 +169,6 @@ public class ItemContainer<T> extends Container implements Scrollable {
 		return false;
 	}
 	
-	int ts;
-	
-	@Override
-	public void onEvent(Event event) {
-		switch (event.type) {
-		case PenEvent.PEN_DOWN:
-			ts = event.timeStamp;
-			repaintNow();
-			break;
-		case PenEvent.PEN_UP:
-			{
-				PenEvent pe = (PenEvent) event;
-				if (validAsPress(pe)) {
-					postEventForTarget(pe);
-				}
-			}
-			break;
-		}
-	}
-
 	private void postEventForTarget(PenEvent pe) {
 		postEvent(getPressedEvent(getTarget(pe)));
 	}
@@ -169,10 +187,6 @@ public class ItemContainer<T> extends Container implements Scrollable {
 		return target;
 	}
 
-	private boolean validAsPress(PenEvent pe) {
-		return pe.timeStamp - ts < 500 && ((!Settings.fingerTouch || !hadParentScrolled()) && isInsideOrNear(pe.x, pe.y));
-	}
-	
 	private void setSelectedContainer(ValueableContainer<? extends T> newSelectedContainer) {
 		if (selectedContainer == newSelectedContainer) {
 			return;
