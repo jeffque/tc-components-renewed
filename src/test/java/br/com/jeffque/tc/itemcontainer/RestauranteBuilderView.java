@@ -51,8 +51,27 @@ public class RestauranteBuilderView extends ValueableContainer<Restaurante> {
 	
 	public void reset() {
 		getBuilder().reset();
+		loadBuilder();
 	}
 	
+	public void load(Restaurante restaurante) {
+		getBuilder().getInfo(restaurante);
+		_load(restaurante);
+	}
+
+	private void loadBuilder() {
+		_load(getBuilder());
+	}
+	
+	private void _load(Restaurante restaurante) {
+		edtNome.setText(restaurante.getNome());
+		edtSatisfacao.setText(restaurante.getSatisfacao());
+		edtTipo.setText(restaurante.getTipo());
+		edtPreco.setText(restaurante.getPreco());
+		edtDist.setText(restaurante.getDist());
+		edtTempo.setText(restaurante.getTempo());
+	}
+
 	@Override
 	public void initUI() {
 		FocusListener focusListener = new FocusListener() {
