@@ -1,11 +1,11 @@
 package br.com.jeffque.tc.itemcontainer;
 
 import br.com.jeffque.tc.ui.ValueableContainer;
+import totalcross.ui.Container;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.FocusListener;
-import totalcross.ui.gfx.Rect;
 
 public class RestauranteBuilderView extends ValueableContainer<Restaurante> {
 	private static final String intCharset = Edit.numbersSet;
@@ -113,46 +113,26 @@ public class RestauranteBuilderView extends ValueableContainer<Restaurante> {
 		edtDist.addFocusListener(focusListener);
 		edtTempo.addFocusListener(focusListener);
 		
-		add(lblNome, LEFT, TOP, PREFERRED, PREFERRED);
-		add(edtNome, AFTER, SAME, FILL, SAME);
+		Container divLikeLabelContainer = new Container();
+		add(divLikeLabelContainer, LEFT, TOP, WILL_RESIZE, FILL);
+		divLikeLabelContainer.add(lblNome, LEFT, TOP, PREFERRED, PREFERRED);
+		divLikeLabelContainer.add(lblSatisfacao, LEFT, AFTER, PREFERRED, PREFERRED);
+		divLikeLabelContainer.add(lblTipo, LEFT, AFTER, PREFERRED, PREFERRED);
+		divLikeLabelContainer.add(lblPreco, LEFT, AFTER, PREFERRED, PREFERRED);
+		divLikeLabelContainer.add(lblDist, LEFT, AFTER, PREFERRED, PREFERRED);
+		divLikeLabelContainer.add(lblTempo, LEFT, AFTER, PREFERRED, PREFERRED);
+		divLikeLabelContainer.resizeWidth();
 		
-		add(lblSatisfacao, LEFT, AFTER, PREFERRED, PREFERRED);
-		add(edtSatisfacao, AFTER, SAME, FILL, SAME);
-		
-		add(lblTipo, LEFT, AFTER, PREFERRED, PREFERRED);
-		add(edtTipo, AFTER, SAME, FILL, SAME);
-		
-		add(lblPreco, LEFT, AFTER, PREFERRED, PREFERRED);
-		add(edtPreco, AFTER, SAME, FILL, SAME);
-		
-		add(lblDist, LEFT, AFTER, PREFERRED, PREFERRED);
-		add(edtDist, AFTER, SAME, FILL, SAME);
-		
-		add(lblTempo, LEFT, AFTER, PREFERRED, PREFERRED);
-		add(edtTempo, AFTER, SAME, FILL, SAME);
-		
-		normalizeEdtPos();
+		Container divLikeEdtContainer = new Container();
+		add(divLikeEdtContainer, AFTER, SAME, FILL, FILL);
+		divLikeEdtContainer.add(edtNome, LEFT, TOP, FILL, lblNome.getHeight());
+		divLikeEdtContainer.add(edtSatisfacao, LEFT, AFTER, FILL, SAME);
+		divLikeEdtContainer.add(edtTipo, LEFT, AFTER, FILL, SAME);
+		divLikeEdtContainer.add(edtPreco, LEFT, AFTER, FILL, SAME);
+		divLikeEdtContainer.add(edtDist, LEFT, AFTER, FILL, SAME);
+		divLikeEdtContainer.add(edtTempo, LEFT, AFTER, FILL, SAME);
 	}
 	
-	private void normalizeEdtPos() {
-		Edit[] edits = new Edit[] {edtNome, edtSatisfacao, edtTipo, edtPreco, edtDist, edtTempo};
-		int rightmostX = edits[0].getX();
-		
-		for (Edit edit: edits) {
-			int x = edit.getX();
-			
-			if (x > rightmostX) {
-				rightmostX = x;
-			}
-		}
-		
-		for (Edit edit: edits) {
-			Rect r = edit.getRect();
-			r.x = rightmostX;
-			edit.setRect(r);
-		}
-	}
-
 	private RestauranteBuilder getBuilder() {
 		return (RestauranteBuilder) super.getValue();
 	}
