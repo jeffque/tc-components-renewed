@@ -30,4 +30,8 @@ public class RestauranteItemView extends ValueableContainer<Restaurante> {
 		});
 	}
 	
+	@Override
+	public int getPreferredHeight() {
+		return nome.getPreferredHeight() * 3;
+	}
 }
