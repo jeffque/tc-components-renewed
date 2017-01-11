@@ -11,12 +11,12 @@ public class RestauranteBuilderView extends ValueableContainer<Restaurante> {
 	private static final String intCharset = Edit.numbersSet;
 	private static final String numericCharset = intCharset + ".";
 	
-	Label lblNome = new Label("Nome: ");
-	Label lblSatisfacao = new Label("Satisfacao: ");
-	Label lblTipo = new Label("Tipo: ");
-	Label lblPreco = new Label("Preco: ");
-	Label lblDist = new Label("Distancia: ");
-	Label lblTempo = new Label("Tempo: ");
+	Label lblNome;
+	Label lblSatisfacao;
+	Label lblTipo;
+	Label lblPreco;
+	Label lblDist;
+	Label lblTempo;
 	
 	Edit edtNome;
 	Edit edtSatisfacao;
