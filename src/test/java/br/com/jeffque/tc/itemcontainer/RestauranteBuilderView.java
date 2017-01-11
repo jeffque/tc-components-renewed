@@ -9,15 +9,13 @@ import totalcross.ui.event.FocusListener;
 public class RestauranteBuilderView extends ValueableContainer<Restaurante> {
 
 	public RestauranteBuilderView() {
-		super(new Restaurante());
+		super(new RestauranteBuilder());
 		
-		Restaurante restauranteBuilder = getBuilder();
-		restauranteBuilder.setNome("");
-		restauranteBuilder.setSatisfacao("");
-		restauranteBuilder.setTipo("");
-		restauranteBuilder.setPreco("");
-		restauranteBuilder.setDist("");
-		restauranteBuilder.setTempo("");
+		reset();
+	}
+	
+	public void reset() {
+		getBuilder().reset();
 	}
 	
 	@Override
@@ -40,23 +38,13 @@ public class RestauranteBuilderView extends ValueableContainer<Restaurante> {
 		add(edtNome, AFTER, SAME, FILL, SAME);
 	}
 	
-	private Restaurante getBuilder() {
-		return super.getValue();
+	private RestauranteBuilder getBuilder() {
+		return (RestauranteBuilder) super.getValue();
 	}
 	
 	@Override
 	public Restaurante getValue() {
-		Restaurante restauranteBuilder = getBuilder();
-		Restaurante newRestaurante = new Restaurante();
-		
-		newRestaurante.setNome(restauranteBuilder.getNome());
-		newRestaurante.setSatisfacao(restauranteBuilder.getSatisfacao());
-		newRestaurante.setTipo(restauranteBuilder.getTipo());
-		newRestaurante.setPreco(restauranteBuilder.getPreco());
-		newRestaurante.setDist(restauranteBuilder.getDist());
-		newRestaurante.setTempo(restauranteBuilder.getTempo());
-		
-		return newRestaurante;
+		return getBuilder().build();
 	}
 
 }
