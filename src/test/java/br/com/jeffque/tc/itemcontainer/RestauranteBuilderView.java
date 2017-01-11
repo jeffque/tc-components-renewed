@@ -117,6 +117,13 @@ public class RestauranteBuilderView extends ValueableContainer<Restaurante> {
 	}
 	
 	@Override
+	public int getPreferredHeight() {
+		return lblNome.getPreferredHeight() + lblSatisfacao.getPreferredHeight() +
+				lblTipo.getPreferredHeight() + lblPreco.getPreferredHeight() +
+				lblDist.getPreferredHeight() + lblTempo.getPreferredHeight();
+	}
+	
+	@Override
 	public Restaurante getValue() {
 		return getBuilder().build();
 	}
