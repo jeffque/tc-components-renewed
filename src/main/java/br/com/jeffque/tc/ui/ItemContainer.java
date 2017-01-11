@@ -129,7 +129,8 @@ public class ItemContainer<T> extends Container implements Scrollable {
 
 
 	@Override
-	public boolean canScrollContent(int arg0, Object arg1) {
+	public boolean canScrollContent(int penDirection, Object target) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
