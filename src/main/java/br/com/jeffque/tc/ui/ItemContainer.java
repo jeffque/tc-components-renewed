@@ -118,6 +118,10 @@ public class ItemContainer<T> extends Container implements Scrollable {
 		return false;
 	}
 	
+	public List<T> getItems() {
+		return items;
+	}
+	
 	public T getSelectedItem() {
 		return selectedContainer != null? selectedContainer.getValue(): null;
 	}
