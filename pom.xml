@@ -104,5 +104,10 @@
 			<artifactId>magical-utils</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>br.com.jeffque</groupId>
+			<artifactId>tc-utilities</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
