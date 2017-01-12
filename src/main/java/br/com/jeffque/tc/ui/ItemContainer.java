@@ -130,6 +130,19 @@ public class ItemContainer<T> extends Container implements Scrollable {
 		items.add(item);
 		addObjectUI(item);
 	}
+	
+	/**
+	 * Remove todos os items da tela
+	 */
+	public void reset() {
+		setSelectedContainer(null);
+		
+		items.clear();
+		for (Container container: containers) {
+			remove(container);
+		}
+		containers.clear();
+	}
 
 
 	@Override
