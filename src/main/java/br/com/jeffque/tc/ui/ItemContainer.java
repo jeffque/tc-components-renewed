@@ -126,6 +126,11 @@ public class ItemContainer<T> extends Container implements Scrollable {
 		return selectedContainer != null? selectedContainer.getValue(): null;
 	}
 	
+	public void addItems(List<T> items) {
+		this.items.addAll(items);
+		addObjectsUI(items);
+	}
+	
 	public void addItem(T item) {
 		items.add(item);
 		addObjectUI(item);
