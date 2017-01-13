@@ -1,8 +1,14 @@
 package br.com.jeffque.tc.itemcontainer.etc;
 
+import br.com.jeffque.io.FileWrapper;
+import br.com.jeffque.io.StreamWrapper;
 import br.com.jeffque.tc.itemcontainer.Restaurante;
 import br.com.jeffque.tc.ui.BaseContainer;
 import br.com.jeffque.tc.ui.ItemContainer;
+import totalcross.io.BufferedStream;
+import totalcross.io.File;
+import totalcross.io.IOException;
+import totalcross.json.JSONObject;
 import totalcross.ui.Button;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
@@ -63,8 +69,18 @@ public class RestauranteInfo extends BaseContainer {
 		return fileName;
 	}
 	
-	private void salvar() {
-		
+	private void salvar() throws IOException {
+		try (
+				FileWrapper f = new FileWrapper(new File(getFileName(), File.CREATE_EMPTY));
+				StreamWrapper stream = new StreamWrapper(new BufferedStream(f, BufferedStream.WRITE))
+			) {
+			stream.writeBytes("[");
+			for (Restaurante r: restauranteScreen.getItems()) {
+				JSONObject json = new JSONObject(r);
+				stream.writeBytes(json.toString(4));
+			}
+			stream.writeBytes("]");
+		}
 	}
 	
 	private void carregar() {
