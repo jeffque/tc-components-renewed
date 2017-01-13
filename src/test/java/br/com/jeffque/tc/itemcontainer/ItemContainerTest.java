@@ -25,7 +25,7 @@ public class ItemContainerTest extends BaseContainer {
 			
 			@Override
 			public void controlPressed(ControlEvent arg0) {
-				itemContainer.addObject(restauranteBuilderView.getValue());
+				itemContainer.addItem(restauranteBuilderView.getValue());
 			}
 		});
 		

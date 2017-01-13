@@ -126,7 +126,7 @@ public class ItemContainer<T> extends Container implements Scrollable {
 		return selectedContainer != null? selectedContainer.getValue(): null;
 	}
 	
-	public void addObject(T item) {
+	public void addItem(T item) {
 		items.add(item);
 		addObjectUI(item);
 	}
