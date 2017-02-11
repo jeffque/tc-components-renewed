@@ -1,5 +1,7 @@
 package br.com.jeffque.tc.itemcontainer;
 
+import totalcross.json.JSONObject;
+
 public class RestauranteBuilder extends Restaurante {
 	public Restaurante build() {
 		Restaurante newRestaurante = new Restaurante();
@@ -30,5 +32,18 @@ public class RestauranteBuilder extends Restaurante {
 		setPreco(restaurante.getPreco());
 		setDist(restaurante.getDist());
 		setTempo(restaurante.getTempo());
+	}
+
+	public void povoa(JSONObject json) {
+		setNome(getJsonString(json, "nome"));
+		setSatisfacao(getJsonString(json, "satisfacao"));
+		setTipo(getJsonString(json, "tipo"));
+		setPreco(getJsonString(json, "preco"));
+		setDist(getJsonString(json, "dist"));
+		setTempo(getJsonString(json, "tempo"));
+	}
+	
+	private static String getJsonString(JSONObject json, String key) {
+		return json.optString(key, null);
 	}
 }
