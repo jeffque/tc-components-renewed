@@ -90,8 +90,15 @@ public class RestauranteInfo extends BaseContainer {
 				FileWrapper f = new FileWrapper(new File(getFileName(), File.CREATE_EMPTY));
 				StreamWrapper stream = new StreamWrapper(new BufferedStream(f, BufferedStream.WRITE))
 			) {
+			boolean first = true;
 			stream.writeBytes("[");
+			
 			for (Restaurante r: restauranteScreen.getItems()) {
+				if (first) {
+					first = false;
+				} else {
+					stream.writeBytes(",".getBytes());
+				}
 				JSONObject json = new JSONObject(r);
 				stream.writeBytes(json.toString(4));
 			}
