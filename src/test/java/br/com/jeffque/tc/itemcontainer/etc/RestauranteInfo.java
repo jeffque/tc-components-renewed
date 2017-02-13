@@ -59,6 +59,20 @@ public class RestauranteInfo extends BaseContainer {
 			}
 		});
 		
+		Button carregarButton = new Button("Carregar");
+		carregarButton.addPressListener(new PressListener() {
+			
+			@Override
+			public void controlPressed(ControlEvent e) {
+				try {
+					carregar();
+				} catch (IOException e1) {
+					Vm.debug("Erro ao carregar, colocar um modal aqui para falar com o usuário");
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 		add(qnt, LEFT, AFTER, FILL, PREFERRED);
 		
 		Label fileNameLbl = new Label("Nome do arquivo: ");
@@ -81,6 +95,7 @@ public class RestauranteInfo extends BaseContainer {
 		add(fileNameEdt, AFTER, SAME, FILL, SAME);
 		
 		add(salvarButton, LEFT, AFTER, FILL, PREFERRED);
+		add(carregarButton, LEFT, AFTER, FILL, PREFERRED);
 		add(limparButton, LEFT, AFTER, FILL, PREFERRED);
 	}
 	
