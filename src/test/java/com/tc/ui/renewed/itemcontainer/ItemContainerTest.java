@@ -1,10 +1,10 @@
 package com.tc.ui.renewed.itemcontainer;
 
 import com.tc.ui.renewed.itemcontainer.etc.RestauranteInfo;
+import com.tc.ui.renewed.ui.BaseContainer;
+import com.tc.ui.renewed.ui.BaseTCMain;
 import com.tc.ui.renewed.ui.ItemContainer;
 
-import br.com.jeffque.tc.ui.BaseContainer;
-import br.com.jeffque.tc.ui.BaseTCMain;
 import totalcross.res.Resources;
 import totalcross.ui.Button;
 import totalcross.ui.event.ControlEvent;

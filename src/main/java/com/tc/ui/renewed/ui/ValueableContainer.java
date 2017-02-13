@@ -1,6 +1,7 @@
 package com.tc.ui.renewed.ui;
 
-import br.com.jeffque.magic.util.Valueable;
+import com.tc.utils.magic.util.Valueable;
+
 import totalcross.ui.Container;
 
 public class ValueableContainer<V> extends Container implements Valueable<V> {

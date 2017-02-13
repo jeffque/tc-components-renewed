@@ -105,7 +105,7 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>br.com.jeffque</groupId>
+			<groupId>com.tc.utils</groupId>
 			<artifactId>tc-utilities</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
