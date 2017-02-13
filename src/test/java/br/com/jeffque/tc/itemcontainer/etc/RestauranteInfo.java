@@ -9,6 +9,7 @@ import totalcross.io.BufferedStream;
 import totalcross.io.File;
 import totalcross.io.IOException;
 import totalcross.json.JSONObject;
+import totalcross.sys.Vm;
 import totalcross.ui.Button;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
@@ -41,6 +42,20 @@ public class RestauranteInfo extends BaseContainer {
 			}
 		});
 		
+		Button salvarButton = new Button("Salvar");
+		salvarButton.addPressListener(new PressListener() {
+			
+			@Override
+			public void controlPressed(ControlEvent e) {
+				try {
+					salvar();
+				} catch (IOException e1) {
+					Vm.debug("Erro ao salvar, colocar um modal aqui para falar com o usuário");
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 		add(qnt, LEFT, AFTER, FILL, PREFERRED);
 		
 		Label fileNameLbl = new Label("Nome do arquivo: ");
@@ -62,6 +77,7 @@ public class RestauranteInfo extends BaseContainer {
 		add(fileNameLbl, LEFT, AFTER, PREFERRED, PREFERRED);
 		add(fileNameEdt, AFTER, SAME, FILL, SAME);
 		
+		add(salvarButton, LEFT, AFTER, FILL, PREFERRED);
 		add(limparButton, LEFT, AFTER, FILL, PREFERRED);
 	}
 	
