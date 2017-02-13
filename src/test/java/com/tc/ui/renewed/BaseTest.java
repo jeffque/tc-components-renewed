@@ -1,6 +1,6 @@
-package br.com.jeffque.tc;
+package com.tc.ui.renewed;
 
-import br.com.jeffque.tc.ui.BaseTCMain;
+import com.tc.ui.renewed.ui.BaseTCMain;
 
 public class BaseTest extends BaseTCMain<BaseMenu> {
 	public BaseTest() {

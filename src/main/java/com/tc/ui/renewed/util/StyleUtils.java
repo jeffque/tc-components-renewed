@@ -1,4 +1,4 @@
-package br.com.jeffque.tc.util;
+package com.tc.ui.renewed.util;
 
 import totalcross.ui.Control;
 import totalcross.ui.gfx.Color;

@@ -1,14 +1,15 @@
-package br.com.jeffque.tc;
+package com.tc.ui.renewed;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.jeffque.tc.itemcontainer.ItemContainerTest;
-import br.com.jeffque.tc.multislider.MultiSliderTest;
-import br.com.jeffque.tc.ui.BaseContainer;
-import br.com.jeffque.tc.ui.BaseTCMain;
-import br.com.jeffque.tc.ui.FirstContainer;
-import br.com.jeffque.tc.util.ContainerYielder;
+import com.tc.ui.renewed.multislider.MultiSliderTest;
+import com.tc.ui.renewed.ui.BaseContainer;
+import com.tc.ui.renewed.ui.BaseTCMain;
+import com.tc.ui.renewed.ui.FirstContainer;
+import com.tc.ui.renewed.util.ContainerYielder;
+
 import totalcross.ui.Button;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.PressListener;

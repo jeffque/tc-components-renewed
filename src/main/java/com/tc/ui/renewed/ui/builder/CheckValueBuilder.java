@@ -1,13 +1,14 @@
-package br.com.jeffque.tc.ui.builder;
+package com.tc.ui.renewed.ui.builder;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import br.com.jeffque.magic.util.Presenter;
-import br.com.jeffque.magic.util.ValueChangeHandler;
-import br.com.jeffque.tc.ui.CheckGroupValue;
-import br.com.jeffque.tc.ui.CheckValue;
+import com.tc.ui.renewed.ui.CheckGroupValue;
+import com.tc.ui.renewed.ui.CheckValue;
+import com.tc.utils.magic.util.Presenter;
+import com.tc.utils.magic.util.ValueChangeHandler;
+
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.PressListener;
 

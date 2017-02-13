@@ -1,4 +1,4 @@
-package br.com.jeffque.tc.ui.builder;
+package com.tc.ui.renewed.ui.builder;
 
 public class BuildComponentException extends RuntimeException {
 	private static final long serialVersionUID = 4104288189360417249L;

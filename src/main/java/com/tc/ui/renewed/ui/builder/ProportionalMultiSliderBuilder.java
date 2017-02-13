@@ -1,13 +1,14 @@
-package br.com.jeffque.tc.ui.builder;
+package com.tc.ui.renewed.ui.builder;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import br.com.jeffque.magic.util.Presenter;
-import br.com.jeffque.magic.util.ReadWriteAccessor;
-import br.com.jeffque.tc.ui.ProportionalMultiSlider;
-import br.com.jeffque.tc.ui.SliderValue;
+import com.tc.ui.renewed.ui.ProportionalMultiSlider;
+import com.tc.ui.renewed.ui.SliderValue;
+import com.tc.utils.magic.util.Presenter;
+import com.tc.utils.magic.util.ReadWriteAccessor;
+
 import totalcross.util.BigDecimal;
 
 public class ProportionalMultiSliderBuilder<V> {

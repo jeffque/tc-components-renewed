@@ -1,4 +1,4 @@
-package br.com.jeffque.tc.ui;
+package com.tc.ui.renewed.ui;
 
 import totalcross.ui.MainWindow;
 

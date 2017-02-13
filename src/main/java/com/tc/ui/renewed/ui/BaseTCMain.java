@@ -1,6 +1,7 @@
-package br.com.jeffque.tc.ui;
+package com.tc.ui.renewed.ui;
 
-import br.com.jeffque.tc.util.StyleUtils;
+import com.tc.ui.renewed.util.StyleUtils;
+
 import totalcross.sys.Vm;
 import totalcross.ui.MainWindow;
 

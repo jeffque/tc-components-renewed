@@ -1,4 +1,4 @@
-package br.com.jeffque.tc.multislider;
+package com.tc.ui.renewed.multislider;
 
 import totalcross.util.BigDecimal;
 

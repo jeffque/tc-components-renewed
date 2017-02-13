@@ -1,6 +1,7 @@
-package br.com.jeffque.tc.ui;
+package com.tc.ui.renewed.ui;
 
-import br.com.jeffque.magic.util.Valueable;
+import com.tc.utils.magic.util.Valueable;
+
 import totalcross.ui.Radio;
 
 public class RadioValue<V> extends Radio implements Valueable<V> {
