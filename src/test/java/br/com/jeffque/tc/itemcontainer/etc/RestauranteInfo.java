@@ -3,11 +3,14 @@ package br.com.jeffque.tc.itemcontainer.etc;
 import br.com.jeffque.io.FileWrapper;
 import br.com.jeffque.io.StreamWrapper;
 import br.com.jeffque.tc.itemcontainer.Restaurante;
+import br.com.jeffque.tc.itemcontainer.RestauranteBuilder;
 import br.com.jeffque.tc.ui.BaseContainer;
 import br.com.jeffque.tc.ui.ItemContainer;
 import totalcross.io.BufferedStream;
 import totalcross.io.File;
 import totalcross.io.IOException;
+import totalcross.json.JSONArray;
+import totalcross.json.JSONException;
 import totalcross.json.JSONObject;
 import totalcross.sys.Vm;
 import totalcross.ui.Button;
@@ -106,13 +109,44 @@ public class RestauranteInfo extends BaseContainer {
 		}
 	}
 	
-	private void carregar() {
-		// TODO implementar
+	private void carregar() throws IOException {
+		_limpar();
+		
+		try (
+				FileWrapper f = new FileWrapper(new File(getFileName(), File.READ_ONLY));
+				StreamWrapper stream = new StreamWrapper(new BufferedStream(f, BufferedStream.READ))
+			) {
+			StringBuffer buff = new StringBuffer();
+			byte[] b = new byte[16 * 1024];
+			
+			while (true) {
+				int l = stream.readBytes(b, 0, b.length);
+				if (l <= 0) {
+					break;
+				}
+				buff.append(new String(b, 0, l));
+			}
+			
+			JSONArray jsonArray = new JSONArray(buff.toString());
+			try {
+				RestauranteBuilder builder = new RestauranteBuilder();
+				for (int idx = 0;; idx++) {
+					builder.reset();
+					JSONObject json = (JSONObject) jsonArray.get(idx);
+					builder.povoa(json);
+				}
+			} catch (JSONException e) {
+			}
+		}
 	}
 	
 	private void limpar() {
 		qnt.setText("Quantidade: 0");
 		qnt.repaintNow();
+		restauranteScreen.reset();
+	}
+	
+	private void _limpar() {
 		restauranteScreen.reset();
 	}
 }
