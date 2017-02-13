@@ -1,4 +1,4 @@
-package br.com.jeffque.tc.itemcontainer;
+package com.tc.ui.renewed.itemcontainer;
 
 public class Restaurante {
 	private String nome;

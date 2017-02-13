@@ -1,6 +1,6 @@
-package br.com.jeffque.tc.itemcontainer;
+package com.tc.ui.renewed.itemcontainer;
 
-import br.com.jeffque.tc.util.ContentViewHandler;
+import com.tc.ui.renewed.util.ContentViewHandler;
 
 public class RestauranteViewHandler implements ContentViewHandler<Restaurante> {
 

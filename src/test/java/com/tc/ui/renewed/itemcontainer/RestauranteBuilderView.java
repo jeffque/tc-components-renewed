@@ -1,6 +1,7 @@
-package br.com.jeffque.tc.itemcontainer;
+package com.tc.ui.renewed.itemcontainer;
 
-import br.com.jeffque.tc.ui.ValueableContainer;
+import com.tc.ui.renewed.ui.ValueableContainer;
+
 import totalcross.ui.Container;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;

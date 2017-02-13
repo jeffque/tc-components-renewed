@@ -1,10 +1,11 @@
-package br.com.jeffque.tc.ui;
+package com.tc.ui.renewed.ui;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import br.com.jeffque.tc.util.ContentViewHandler;
+import com.tc.ui.renewed.util.ContentViewHandler;
+
 import totalcross.sys.Settings;
 import totalcross.sys.Vm;
 import totalcross.ui.Container;

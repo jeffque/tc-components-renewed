@@ -1,11 +1,12 @@
-package br.com.jeffque.tc.itemcontainer.etc;
+package com.tc.ui.renewed.itemcontainer.etc;
+
+import com.tc.ui.renewed.itemcontainer.Restaurante;
+import com.tc.ui.renewed.itemcontainer.RestauranteBuilder;
+import com.tc.ui.renewed.ui.ItemContainer;
 
 import br.com.jeffque.io.FileWrapper;
 import br.com.jeffque.io.StreamWrapper;
-import br.com.jeffque.tc.itemcontainer.Restaurante;
-import br.com.jeffque.tc.itemcontainer.RestauranteBuilder;
 import br.com.jeffque.tc.ui.BaseContainer;
-import br.com.jeffque.tc.ui.ItemContainer;
 import totalcross.io.BufferedStream;
 import totalcross.io.File;
 import totalcross.io.IOException;

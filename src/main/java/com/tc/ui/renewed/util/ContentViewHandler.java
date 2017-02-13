@@ -1,6 +1,6 @@
-package br.com.jeffque.tc.util;
+package com.tc.ui.renewed.util;
 
-import br.com.jeffque.tc.ui.ValueableContainer;
+import com.tc.ui.renewed.ui.ValueableContainer;
 
 public interface ContentViewHandler<T> {
 	ValueableContainer<? extends T> createView(T content);

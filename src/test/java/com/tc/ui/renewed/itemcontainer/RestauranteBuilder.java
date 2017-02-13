@@ -1,4 +1,4 @@
-package br.com.jeffque.tc.itemcontainer;
+package com.tc.ui.renewed.itemcontainer;
 
 import totalcross.json.JSONObject;
 

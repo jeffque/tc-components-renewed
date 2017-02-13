@@ -3,7 +3,7 @@ package com.tc.ui.renewed;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.jeffque.tc.itemcontainer.ItemContainerTest;
+import com.tc.ui.renewed.itemcontainer.ItemContainerTest;
 import com.tc.ui.renewed.multislider.MultiSliderTest;
 import com.tc.ui.renewed.ui.BaseContainer;
 import com.tc.ui.renewed.ui.BaseTCMain;
