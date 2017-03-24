@@ -97,7 +97,7 @@ public abstract class BaseContainer extends Container {
 		
 		if (n > 0) {
 			BaseContainer removed = containerStack.remove(n - 1);
-			Vm.debug("Poped " + removed.getClass().getCanonicalName());
+			//Vm.debug("Poped " + removed.getClass().getCanonicalName());
 		}
 
 	}

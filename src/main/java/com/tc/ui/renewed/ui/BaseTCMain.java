@@ -1,9 +1,8 @@
 package com.tc.ui.renewed.ui;
 
-import com.tc.ui.renewed.util.StyleUtils;
-
-import totalcross.sys.Vm;
 import totalcross.ui.MainWindow;
+
+import com.tc.ui.renewed.util.StyleUtils;
 
 public abstract class BaseTCMain<F extends FirstContainer> extends MainWindow {
 
@@ -22,7 +21,7 @@ public abstract class BaseTCMain<F extends FirstContainer> extends MainWindow {
 	}
 
 	public void show(BaseContainer container) {
-		Vm.debug("Showing " + container.getClass().getCanonicalName());
+		//Vm.debug("Showing " + container.getClass().getCanonicalName());
 		swap(container);
 	}
 
