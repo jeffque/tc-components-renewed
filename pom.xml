@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.tc.ui</groupId>
+	<groupId>com.totalcross.ui</groupId>
 	<artifactId>tc-components-renewed</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -13,6 +13,21 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>totalcross-repo</id>
+			<name>repo1</name>
+			<url>http://52.40.155.34/artifactory/repo1</url>
+		</repository>
+		<repository>
+			<id>tc-maven2</id>
+			<name>tc-maven2</name>
+			<url>http://52.40.155.34/artifactory/central-maven2</url>
+		</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
@@ -95,12 +110,13 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>totalcross</groupId>
-			<artifactId>tc</artifactId>
-			<version>3.3_2928</version>
+			<groupId>com.totalcross</groupId>
+			<artifactId>totalcross-sdk</artifactId>
+			<version>4.0.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.tc.utils</groupId>
+			<groupId>com.totalcross.utils</groupId>
 			<artifactId>magical-utils</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
